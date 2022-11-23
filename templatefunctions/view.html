@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learning html/template Functions</title>
+</head>
+<body>
+	<p>
+		{{html "<h2>Hello</h2>"}}
+	</p>
+
+	{{if eq .Name "Bruce Wayne"}}
+		<p>I'm The Batman</p>
+	{{else if ne.Name "Clark Kent"}}
+		<p>I'm neither Batman or Superman</p>
+	{{end}}
+
+	<p>
+		{{.SayHello "Gotham Citizen" "You are our Hero!"}}
+	</p>
+
+	<p>
+		{{printf "%s because I'm %s" "You Know Why?" "Batman"}}
+	</p>
+	<p>
+		Batman Have many friends. {{len .Friends}} of them are:
+		{{index .Friends 0}},
+		{{index .Friends 1}}, and
+		{{index .Friends 2}}
+	</p>
+
+	{{$cond1 := true}}
+	{{$cond2 := false}}
+
+
+	{{if or $cond1 $cond2}}
+		<p>Be like Batman</p>
+	{{end}}
+</body>
+</html>
