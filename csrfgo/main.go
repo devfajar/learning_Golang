@@ -7,10 +7,13 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/labstack/echo/v4/middleware"
+	//"github.com/labstack/echo/v4/middleware"
 )
 
 type M map[string]interface{}
+
+const CSRFTokenHeader = "X-Csrf-Token"
+const CSRFKey = "csrf_token"
 
 func main() {
 	tmpl := template.Must(template.ParseGlob("./*.html"))
@@ -18,8 +21,7 @@ func main() {
 	e := echo.New()
 
 	// ...
-	const CSRFTokenHeader = "X-CSRF-Token"
-	const CSRFKey = "csrf"
+
 	e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
 		TokenLookup: "header:" + CSRFTokenHeader,
 		ContextKey:  CSRFKey,

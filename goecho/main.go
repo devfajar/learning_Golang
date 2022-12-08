@@ -2,15 +2,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/labstack/echo"
 	"net/http"
 	"strings"
+
+	"github.com/labstack/echo"
 )
 
 type M map[string]interface{}
 
 type User struct {
-	Name string `json:"name" form:"name" query:"name"`
+	Name  string `json:"name" form:"name" query:"name"`
 	Email string `json:"email" form:"email" query:"name"`
 }
 
@@ -76,7 +77,6 @@ func main() {
 		return ctx.String(http.StatusOK, data)
 	})
 
-
 	r.GET("/index", echo.WrapHandler(http.HandlerFunc(ActionIndex)))
 	r.GET("/home", echo.WrapHandler(ActionHome))
 	r.GET("/about", ActionAbout)
@@ -90,6 +90,6 @@ func main() {
 
 		return c.JSON(http.StatusOK, u)
 	})
-	
+
 	r.Start(":9000")
 }
